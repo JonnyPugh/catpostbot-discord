@@ -1,0 +1,23 @@
+{
+  "name": "catpostbot-discord",
+  "version": "0.0.1",
+  "description": "Discord bot that posts cats",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonnyPugh/catpostbot-discord.git"
+  },
+  "author": "Jonathan Pugh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JonnyPugh/catpostbot-discord/issues"
+  },
+  "homepage": "https://github.com/JonnyPugh/catpostbot-discord#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "discord.js": "^11.5.1"
+  }
+}
