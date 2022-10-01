@@ -1,4 +1,5 @@
-FROM node:12.9.0-alpine
+# Use buster-slim version to run on Raspberry Pi
+FROM node:18.10.0-buster-slim
 
 COPY . .
 

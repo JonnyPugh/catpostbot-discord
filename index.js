@@ -1,16 +1,23 @@
-const Discord = require('discord.js');
-const axios = require('axios');
+const { Client, GatewayIntentBits } = require('discord.js');
+const { get } = require('axios');
+
+const client = new Client({
+  // https://discordjs.guide/popular-topics/intents.html
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
+});
 
 const sendCats = async (message, numCats) => {
-  const catImages = (await axios.get(`https://api.thecatapi.com/v1/images/search?limit=${numCats}`)).data;
+  const catImages = (await get(`https://api.thecatapi.com/v1/images/search?limit=${numCats}`)).data;
   for (const catImage of catImages) {
-    message.channel.send(new Discord.Attachment(catImage.url));
+    message.channel.send({files: [catImage.url]});
   }
 }
 
-const client = new Discord.Client();
-
-client.on('message', message => {
+client.on('messageCreate', message => {
   if (message.content === '!cat') {
     sendCats(message, 1);
   } else if (/^!cat [0-9]*$/.test(message.content)) {
